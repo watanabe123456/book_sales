@@ -14,10 +14,13 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	//spring data-jpa
+	// spring data-jpa
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.4'
-	//mysql connector
+	// mysql connector
 	implementation 'mysql:mysql-connector-java:8.0.31'
+	// swagger api
+	implementation 'io.springfox:springfox-swagger2:2.9.2'
+	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 	
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

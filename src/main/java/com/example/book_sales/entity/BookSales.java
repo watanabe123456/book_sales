@@ -1,27 +1,63 @@
 package com.example.book_sales.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import com.example.book_sales.vo.BookSalesReq;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
-
+@Table(name = "bookinventory")
 public class BookSales {
-	
+
+	@Column(name = "book_title")
 	private String bookTitle;
-	
-	private int isbn;
-	
+
+	@Id
+	@Column(name = "isbn")
+	private String isbn;
+
+	@Column(name = "author")
 	private String author;
-	
-	private int price;
-	
-	private int purchaseQuantity;
-	
-	private int salesVolume;
-	
+
+	@Column(name = "price")
+	private Integer price;
+
+	@Column(name = "inventory_quantity")
+	private Integer inventoryQuantity;
+
+	@Column(name = "sales_volume")
+	private Integer salesVolume;
+
+	@Column(name = "classification")
 	private String classification;
-	
+
 	public BookSales() {
-		
+
+	}
+
+	public BookSales(BookSalesReq req) {
+		this.bookTitle = req.getBookTitle();
+		this.isbn = req.getIsbn();
+		this.author = req.getAuthor();
+		this.price = req.getPrice();
+		this.inventoryQuantity = req.getInventoryQuantity();
+		this.salesVolume = req.getSalesVolume();
+		this.classification = req.getClassification();
+	}
+
+	public BookSales(String bookTitle, String isbn, String author, Integer price, Integer inventoryQuantity,
+			Integer salesVolume, String classification) {
+		this.bookTitle = bookTitle;
+		this.isbn = isbn;
+		this.author = author;
+		this.price = price;
+		this.inventoryQuantity = inventoryQuantity;
+		this.salesVolume = salesVolume;
+		this.classification = classification;
 	}
 
 	public String getBookTitle() {
@@ -32,11 +68,11 @@ public class BookSales {
 		this.bookTitle = bookTitle;
 	}
 
-	public int getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 
@@ -48,27 +84,27 @@ public class BookSales {
 		this.author = author;
 	}
 
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 
-	public int getPurchaseQuantity() {
-		return purchaseQuantity;
+	public Integer getInventoryQuantity() {
+		return inventoryQuantity;
 	}
 
-	public void setPurchaseQuantity(int purchaseQuantity) {
-		this.purchaseQuantity = purchaseQuantity;
+	public void setInventoryQuantity(Integer inventoryQuantity) {
+		this.inventoryQuantity = inventoryQuantity;
 	}
 
-	public int getSalesVolume() {
+	public Integer getSalesVolume() {
 		return salesVolume;
 	}
 
-	public void setSalesVolume(int salesVolume) {
+	public void setSalesVolume(Integer salesVolume) {
 		this.salesVolume = salesVolume;
 	}
 
@@ -79,7 +115,4 @@ public class BookSales {
 	public void setClassification(String classification) {
 		this.classification = classification;
 	}
-	
-	
-
 }
